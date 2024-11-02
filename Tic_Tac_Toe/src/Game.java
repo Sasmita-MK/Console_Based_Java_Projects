@@ -9,6 +9,7 @@ public class Game {
     private int totTurns;
     private boolean[][] vis;
     private char currentSymbol;
+    private String currentPlayerName;
     private Scanner sc;
 
     public Game(Board board, Player player1, Player player2, Scanner sc) {
@@ -30,13 +31,13 @@ public class Game {
         }
     }
 
-    @SuppressWarnings("unused")
     public void gameLogic() {
         while(true) {
             board.printBoard();
-            if(turn) currentSymbol = player1.getSymbol();
-            else currentSymbol = player2.getSymbol();
-            System.out.println("Enter the position for the symbol " + currentSymbol + " : ");
+            currentSymbol = turn ? player1.getSymbol() : player2.getSymbol();
+            currentPlayerName = turn ? player1.getName() : player2.getName();
+            System.out.println(currentPlayerName + " Please enter the position for your symbol " 
+                + currentSymbol);
             System.out.print("Row (0 - " + (size-1) + ") : ");
             int row = sc.nextInt();
             while(row<0 || row>=size) {
@@ -70,7 +71,7 @@ public class Game {
         vis[row][col] = true;
         table[row][col] = currentSymbol;
         if(totTurns>=2*size-1 && (isRow(row, currentSymbol) || isColumn(col, currentSymbol) 
-            || (row == col && (isDiagonal(currentSymbol) || isAntiDiagonal(currentSymbol))))) {
+            || isDiagonal(currentSymbol) || isAntiDiagonal(currentSymbol))) {
                 if(turn) return "Winner is " + player1.getName();
                 else return "Winner is " + player2.getName();
         }
