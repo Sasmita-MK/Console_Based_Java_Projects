@@ -37,6 +37,7 @@ public class App {
         player2.printPlayer();
         System.out.println();
     
-        board.printBoard();
+        Game game = new Game(board, player1, player2, sc);
+        game.gameLogic();
     }
 }
