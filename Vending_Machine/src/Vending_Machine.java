@@ -32,7 +32,8 @@ public class Vending_Machine {
                 System.out.println("Enter the Correct ID for the product");
             }
             if(items.get(id).getQuantity() <= 0) {
-                System.out.println("Sorry! We don't have the " + items.get(id).getName() + " right now.")
+                System.out.println("Sorry! We don't have the " + items.get(id).getName() + " right now.");
+                continue;
             }
             System.out.print("Enter the number of quantity you need for " + items.get(id).getName() + " : ");
             int quantity = Integer.parseInt(sc.nextLine());
