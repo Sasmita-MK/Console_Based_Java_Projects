@@ -53,7 +53,7 @@ public class Vending_Machine {
                     int quantity = Integer.parseInt(sc.nextLine());
                     if((itemQuantity < quantity)) {
                         System.out.println("Sorry! We don't have " + quantity + " " + itemName + 
-                        "\nWe have only " + itemQuantity + "Please continue with shopping!😊");
+                        "\nWe have only " + itemQuantity + " Please continue with shopping!");
                         continue;
                     }
                     if(quantity <= 0) {
